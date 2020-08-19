@@ -1,0 +1,166 @@
+#include<iostream>
+#include<cmath>
+#include <string>
+#include<stdio.h> 
+#include<fstream>
+using namespace std;
+int kop (){
+ cout<<"DTNTF\n";
+ cout<<"========================================\n";
+ cout<<"Nama : Muhammad Arya Hanif\n";
+ cout<<"Prodi: Teknik Nuklir\n";
+ cout<<"NIM : 19/443954/TK/49150\n";
+ cout<<"========================================\n";
+}
+int hapus(){
+	string fileToDelete;
+
+	cout << "Enter name of file to delete: ";
+	//cin >> fileToDelete;
+	fileToDelete = "list_angka.txt";
+	if (remove(fileToDelete.c_str()) != 0)
+		cout << "Remove operation failed" << endl;
+	else
+		cout << fileToDelete << " has been removed." << endl;
+
+	return 0;
+}
+int keluar() {
+	int number_of_lines = 0;
+	std::string line;
+	std::ifstream myfile("list_angka.txt");
+
+	while (getline(myfile, line))
+		++number_of_lines;
+	std::cout << "Number of lines in text file: " << number_of_lines;
+	return 0;
+}
+int load(){
+    int n=20;
+    float x[20];
+    int jum1 = 0, jum2 = 0;
+    double rata2, rerata, ralat,rerata2,stdeviasi,kurung,standev;
+    ifstream baca;
+    baca.open ("daftar awal.txt");
+    for (int i=0;i<n;i++)
+    {
+        baca>>x[i];
+    }
+        baca.close();	        
+	for (int i = 0; i < n; i++) {
+		jum1 += x[i];
+		//cout << "nilai jum1 ke-" << i+1 << " = " << jum1<<endl;
+		}
+	rata2 = ((jum1*1.00000000000) / n);
+	//cout<<"rata2="<<rata2<<"      jum1="<<jum1;
+	for (int i = 0; i < n; i++) {
+		kurung = x[i] - rata2;
+		jum2 += pow(kurung,2);
+	}
+	cout << "\nStandar deviasi Sampel : \nakar (" << jum2 << "/(" << n << "-1) :" << endl;
+	rerata2 = sqrt((jum2 * 1.00000000000) / (n - 1));
+	cout << rerata2 << endl;
+	cout << "Standar deviasi Populasi : \nakar (" << jum2 << "/" << n << ") :" << endl;
+	standev = sqrt((jum2 * 1.00000000000) / (n));
+	cout << standev << endl;
+	cout << "Error :"<<standev<<"/"<<sqrt(n)<<" :" << endl<<standev/sqrt(n)<<endl;
+}
+int buat(){
+	int nomor,n;
+	cout <<"how many number are there? "<<endl;
+	cin >> n;
+	cout <<"so there's "<<n<<" number? and what does it consist of?(press enter to submit the number)"<<endl;
+	ofstream outFile;
+	outFile.open("listangka.txt");
+	
+	for (int i = 0; i < n; i++) {
+		cin>>nomor;
+		outFile << nomor << endl;			
+		}
+	outFile.close();
+	float x[n];
+    int jum1 = 0, jum2 = 0;
+    double rata2, rerata, ralat,rerata2,stdeviasi,kurung,standev;
+    ifstream baca;
+    baca.open ("listangka.txt");
+    for (int i=0;i<n;i++)
+    {
+        baca>>x[i];
+    }
+        baca.close();
+    for (int i = 0;i < n; i++)
+    {
+          jum1 += x[i];
+        jum2 += pow(x[i],2); // pow(x,y) di cmath
+		//cin>>lalala;
+		//outFile << lalala << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		jum1 += x[i];
+		
+	}rata2 = ((jum1*1.00000000000) / n);
+	
+	for (int i = 0; i < n; i++) {
+		kurung = x[i] - rata2;
+		jum2 += pow(kurung,2);
+	}
+	
+	cout << "Standar deviasi Sampel : \nakar (" << jum2 << "/(" << n << "-1)) :" << endl;
+	rerata2 = sqrt((jum2 * 1.00000000000) / (n - 1));
+	cout << rerata2 << endl;
+	cout << "Standar deviasi Populasi : \nakar (" << jum2 << "/" << n << ") :" << endl;
+	standev = sqrt((jum2 * 1.00000000000) / (n));
+	cout << standev << endl<<endl;
+	cout << "Error :"<<standev<<"/"<<sqrt(n)<<" :" << endl<<standev/sqrt(n);
+}
+int cariclean(){	
+	int x[20] = { 15,16,23,16,18,20,20,17,16,12,15,16,18,17,15,16,25,10,14,17 },n=20;
+	int jum1 = 0, jum2 = 0;
+	double rata2, rerata2, ralat, stdeviasi,kurung,standev;
+	for (int i = 0; i < n; i++) {
+		jum1 += x[i];
+		
+	}rata2 = ((jum1*1.00000000000) / n);
+	
+	for (int i = 0; i < n; i++) {
+		kurung = x[i] - rata2;
+		jum2 += pow(kurung,2);
+	}
+	
+	cout << "Standar deviasi Sampel : \nakar (" << jum2 << "/(" << n << "-1)) :" << endl;
+	rerata2 = sqrt((jum2 * 1.00000000000) / (n - 1));
+	cout << rerata2 << endl;
+	cout << "Standar deviasi Populasi : \nakar (" << jum2 << "/" << n << ") :" << endl;
+	standev = sqrt((jum2 * 1.00000000000) / (n));
+	cout << standev <<endl;
+	cout << "Error :"<<standev<<"/"<<sqrt(n)<<" :" << endl<<standev/sqrt(n)<<endl;
+}
+int main(){
+	int choice;
+	float exit;
+	kop();
+	
+	while (exit != 0){
+	
+	cout<< "please choose an array to search of it's standard deviation & error"<<endl;
+	cout<< "1) Pre existing array (Build in)  2)Pre existing array (txt)  3)create new array (as txt)"<<endl;
+	cin>>choice;
+	if (choice == 1) {
+			cout <<"\nPre existing array is 15,16,23,16,18,20,20,17,16,12,15,16,18,17,15,16,25,10,14,17"<<endl;
+			cariclean();
+			};
+	if (choice == 2) {
+			cout <<"\nPre existing array is 15,16,23,16,18,20,20,17,16,12,15,16,18,17,15,16,25,10,14,17";
+			load();
+			};
+	if (choice == 3) {
+			hapus();
+			cout<<"^ignore this if it's failed or sucess\n";
+			buat();
+			};
+	cout<<"\nexit? enter number other than 0 to continue"<<endl;
+	cin>>exit;
+	cout<<endl<<"=======================================================\n";
+	}
+	
+}
