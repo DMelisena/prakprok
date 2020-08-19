@@ -87,31 +87,24 @@ int buat(){
     {
         baca>>x[i];
     }
-        baca.close();
-    for (int i = 0;i < n; i++)
-    {
-          jum1 += x[i];
-        jum2 += pow(x[i],2); // pow(x,y) di cmath
-		//cin>>lalala;
-		//outFile << lalala << endl;
-	}
+        baca.close();	        
 	for (int i = 0; i < n; i++) {
 		jum1 += x[i];
-		
-	}rata2 = ((jum1*1.00000000000) / n);
-	
+		//cout << "nilai jum1 ke-" << i+1 << " = " << jum1<<endl;
+		}
+	rata2 = ((jum1*1.00000000000) / n);
+	//cout<<"rata2="<<rata2<<"      jum1="<<jum1;
 	for (int i = 0; i < n; i++) {
 		kurung = x[i] - rata2;
 		jum2 += pow(kurung,2);
 	}
-	
-	cout << "Standar deviasi Sampel : \nakar (" << jum2 << "/(" << n << "-1)) :" << endl;
+	cout << "\nStandar deviasi Sampel : \nakar (" << jum2 << "/(" << n << "-1) :" << endl;
 	rerata2 = sqrt((jum2 * 1.00000000000) / (n - 1));
 	cout << rerata2 << endl;
 	cout << "Standar deviasi Populasi : \nakar (" << jum2 << "/" << n << ") :" << endl;
 	standev = sqrt((jum2 * 1.00000000000) / (n));
-	cout << standev << endl<<endl;
-	cout << "Error :"<<standev<<"/"<<sqrt(n)<<" :" << endl<<standev/sqrt(n);
+	cout << standev << endl;
+	cout << "Error :"<<standev<<"/"<<sqrt(n)<<" :" << endl<<standev/sqrt(n)<<endl;
 }
 int cariclean(){	
 	int x[20] = { 15,16,23,16,18,20,20,17,16,12,15,16,18,17,15,16,25,10,14,17 },n=20;
@@ -120,8 +113,8 @@ int cariclean(){
 	for (int i = 0; i < n; i++) {
 		jum1 += x[i];
 		
-	}rata2 = ((jum1*1.00000000000) / n);
-	
+	}
+	rata2 = ((jum1*1.00000000000) / n);
 	for (int i = 0; i < n; i++) {
 		kurung = x[i] - rata2;
 		jum2 += pow(kurung,2);
